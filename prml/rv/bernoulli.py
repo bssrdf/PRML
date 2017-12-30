@@ -29,7 +29,8 @@ class Bernoulli(RandomVariable):
     def mu(self, mu):
         if isinstance(mu, (int, float, np.number)):
             if mu > 1 or mu < 0:
-                raise ValueError(f"mu must be in [0, 1], not {mu}")
+                #raise ValueError(f"mu must be in [0, 1], not {mu}")
+                raise ValueError("mu must be in [0, 1], not {mu}".format(mu))
             self.parameter["mu"] = np.asarray(mu)
         elif isinstance(mu, np.ndarray):
             if (mu > 1).any() or (mu < 0).any():
@@ -39,7 +40,8 @@ class Bernoulli(RandomVariable):
             self.parameter["mu"] = mu
         else:
             if mu is not None:
-                raise TypeError(f"{type(mu)} is not supported for mu")
+                #raise TypeError(f"{type(mu)} is not supported for mu")
+                raise TypeError("{type(mu)} is not supported for mu".format(mu))
             self.parameter["mu"] = None
 
     @property
@@ -85,7 +87,8 @@ class Bernoulli(RandomVariable):
         n_ones = (X == 1).sum(axis=0)
         n_zeros = (X == 0).sum(axis=0)
         assert X.size == n_zeros.sum() + n_ones.sum(), (
-            f"{X.size} is not equal to {n_zeros} plus {n_ones}"
+            #f"{X.size} is not equal to {n_zeros} plus {n_ones}"
+            "{X.size} is not equal to {n_zeros} plus {n_ones}".format(X.size,n_zeros,n_ones)
         )
         n_ones = n_ones + self.mu.n_ones
         n_zeros = n_zeros + self.mu.n_zeros

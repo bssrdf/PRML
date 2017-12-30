@@ -29,7 +29,8 @@ class Network(object):
                 try:
                     value = Parameter(value)
                 except TypeError:
-                    raise TypeError(f"invalid type argument: {type(value)}")
+                    #raise TypeError(f"invalid type argument: {type(value)}")
+                    raise TypeError("invalid type argument: {type(value)}".format(value))
                 self.parameter[key] = value
             object.__setattr__(self, key, value)
 

@@ -55,7 +55,8 @@ class Categorical(RandomVariable):
         if not ((mu.value >= 0).all() and (mu.value <= 1).all()):
             raise ValueError("values of mu must be in [0, 1]")
         if not np.allclose(mu.value.sum(axis=self.axis), 1):
-            raise ValueError(f"mu must be normalized along axis {self.axis}")
+            #raise ValueError(f"mu must be normalized along axis {self.axis}")
+            raise ValueError("mu must be normalized along axis {self.axis}".format(self.axis))
         self.parameter["mu"] = mu
         self.n_category = mu.shape[self.axis]
 

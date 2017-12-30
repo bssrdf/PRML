@@ -43,10 +43,12 @@ class RandomVariable(Function):
         self._p = p
 
     def __repr__(self):
-        string = f"{self.__class__.__name__}(\n"
+        #string = f"{self.__class__.__name__}(\n"
+        string = "{self.__class__.__name__}(\n".format(self.__class__.__name__)
         for key, value in self.parameter.items():
             string += (" " * 4)
-            string += f"{key}={value}"
+            #string += f"{key}={value}"
+            string += "{key}={value}".format(key,value)
             string += "\n"
         string += ")"
         return string

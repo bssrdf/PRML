@@ -15,9 +15,11 @@ class Dropout(Function):
             probability of dropping the input value
         """
         if not isinstance(prob, float):
-            raise TypeError(f"prob must be float value, not {type(prob)}")
+            #raise TypeError(f"prob must be float value, not {type(prob)}")
+            raise TypeError("prob must be float value, not {type(prob)}".format(prob))
         if prob < 0 or prob > 1:
-            raise ValueError(f"{prob} is out of the range [0, 1]")
+            #raise ValueError(f"{prob} is out of the range [0, 1]")
+            raise ValueError("{prob} is out of the range [0, 1]".format(prob))
         self.prob = prob
         self.coef = 1 / (1 - prob)
 
